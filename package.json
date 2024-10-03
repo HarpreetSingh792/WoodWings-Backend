@@ -1,0 +1,39 @@
+{
+  "name": "woodwings",
+  "version": "1.0.0",
+  "description": "This server is  only for the purpose of handling mail services",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "run": "node ./index.js",
+    "dev": "nodemon ./index.js"
+  },
+  "keywords": [
+    "custom",
+    "kitchen",
+    "cabinets",
+    "bespoke",
+    "carpentry",
+    "wardrobes",
+    "vanities",
+    "laundry",
+    "cabinets",
+    "carpentry",
+    "services",
+    "kitchen",
+    "remodeling",
+    "cabinetry",
+    "woodwork",
+    "Meadowbrook",
+    "QLD",
+    "Woodwings"
+  ],
+  "author": "Wood Wings",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "nodemailer": "^6.9.15",
+    "nodemon": "^3.1.7"
+  }
+}
