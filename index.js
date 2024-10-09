@@ -6,25 +6,42 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 app.post("/send-mssg", async (req, res) => {
   const { name, mail, mssg } = req.body;
 
   // Create transporter for Gmail
+  // 
+  // host:"",
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    secure:true,
-    port:465,
+    host:"p3plzcpnl503493.prod.phx3.secureserver.net",
+    port: 465, // TLS port
+    secure: true, // true for port 465, false for other ports
     auth: {
-      user: "hs.ishu000@gmail.com", // Your organization's Gmail
-      pass: "opwaybxcfzqzferx", // Use app password instead of Gmail password
+      user: "info@woodwings.com.au",
+      pass: "23@Woodwings",
     },
+
   });
+
+
+  // demo
+  // const transporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   secure:true,
+  //   port:465,
+  //   auth: {
+  //     user: "info@woodwings.com.au", // Your organization's Gmail
+  //     pass: "23@Woodwings", // Use app password instead of Gmail password
+  //   },
+  // });
+
+
+
 
   // Mail options for the organization
   const mailOptions = {
-    from: mail,
-    to: "hs.ishu000@gmail.com", // Send to organization's Gmail
+    from: "info@woodwings.com.au",
+    to: "info@woodwings.com.au", // Send to organization's Gmail
     subject: `New Message from ${name}`,
     html: `Dear Amandeep Singh,
     <p style="text-align:justify;">You have received a new inquiry from ${name} via the website contact form. Below are the details of the message:</p>
@@ -48,7 +65,7 @@ app.post("/send-mssg", async (req, res) => {
 
     // Send a "Thank You" email back to the user
     const thankYouMailOptions = {
-      from: "hs.ishu000@gmail.com",
+      from: "info@woodwings.com.au",
       to: mail,
       subject: "Thank You for Your Message!",
       html: `Dear ${name},
