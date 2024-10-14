@@ -10,8 +10,7 @@ app.post("/send-mssg", async (req, res) => {
   const { name, mail, mssg } = req.body;
 
   // Create transporter for Gmail
-  // 
-  // host:"",
+  
   const transporter = nodemailer.createTransport({
     host:"p3plzcpnl503493.prod.phx3.secureserver.net",
     port: 465, // TLS port
@@ -24,24 +23,9 @@ app.post("/send-mssg", async (req, res) => {
   });
 
 
-  // demo
-  // const transporter = nodemailer.createTransport({
-  //   service: "gmail",
-  //   secure:true,
-  //   port:465,
-  //   auth: {
-  //     user: "info@woodwings.com.au", // Your organization's Gmail
-  //     pass: "23@Woodwings", // Use app password instead of Gmail password
-  //   },
-  // });
-
-
-
-
-  // Mail options for the organization
   const mailOptions = {
-    from: "info@woodwings.com.au",
-    to: "info@woodwings.com.au", // Send to organization's Gmail
+    from: "'WoodWings Team' <info@woodwings.com.au>",
+    to: "info@woodwings.com.au",
     subject: `New Message from ${name}`,
     html: `Dear Amandeep Singh,
     <p style="text-align:justify;">You have received a new inquiry from ${name} via the website contact form. Below are the details of the message:</p>
@@ -53,28 +37,115 @@ app.post("/send-mssg", async (req, res) => {
 
     <p>Please follow up with this user at your earliest convenience.</p></br>
     <p>Best regards,</p></br>
-    <p><b>WoodWings</b></p></br>
-    <p><b>woodwings@gmail.com</b></p></br>
-    <p><b>woodwings.com.au</b></p>
-`,
+   
+    <!-- Logo and Text Default Alignment -->
+      <table style="margin: 0;">
+        <tr>
+          <td style="padding: 5px;">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9Wy8QA9phzfROD3602a9BEmP5gTFKJurs4pCw" style="width: 50px; height: auto;" alt="WoodWings Logo"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>WoodWings</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px;">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9CDvT47sd45tj79u3iMWyHblXCz86QKBwNZgc" style="width: 30px; height: auto;" alt="Website Logo"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>woodwings.com.au</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px; width:50px">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9ksCO0Xrqupw79mIBnSQMrhGyUotzZi2E6KTv" style="width: 30px; height: auto;" alt="mail-icon"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>info@woodwings.com.au</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px; width:50px">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9nNOVfNZzPKoaVyQ1jAierfdtmzMLOZ3hBI84" style="width: 30px; height: auto;" alt="phone-icon"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>+61 0403-597-672</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px; width:50px">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9nNOVfNZzPKoaVyQ1jAierfdtmzMLOZ3hBI84" style="width: 30px; height: auto;" alt="phone-icon"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>+61 0477-631-520</b></p>
+          </td>
+        </tr>
+      </table>`,
   };
 
   try {
     // Send email to the organization
+
     await transporter.sendMail(mailOptions);
 
     // Send a "Thank You" email back to the user
+
     const thankYouMailOptions = {
-      from: "info@woodwings.com.au",
+
+      from: "'WoodWings Team' <info@woodwings.com.au>",
       to: mail,
+
       subject: "Thank You for Your Message!",
+
       html: `Dear ${name},
       <p style="text-align:justify">Thank you for reaching out to us at WoodWings. We have received your message and truly appreciate your interest in our services. Your inquiry is important to us, and one of our representatives will get back to you as soon as possible.</p></br>
       <p style="text-align:justify">In the meantime, if you have any further questions or need additional information, feel free to reply to this email or visit our website at <b>${"woodwings.com.au"}</b>.</p></br>
       <p style="text-align:justify">Thank you once again for your message, and we look forward to assisting you!</p></br></br>
       <p>Best regards,</p></br>
-      <p><b>WoodWings</b></p>
-      <p><b>+61 0403-597-672</b></p>`,
+
+      <!-- Logo and Text Default Alignment -->
+      <table style="margin: 0;">
+        <tr>
+          <td style="padding: 5px;">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9Wy8QA9phzfROD3602a9BEmP5gTFKJurs4pCw" style="width: 50px; height: auto;" alt="WoodWings Logo"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>WoodWings</b></p>
+          </td>
+        </tr>
+        <tr>
+        <td style="padding: 5px;">
+          <img src="https://utfs.io/f/TRmbMxI5Lwa9CDvT47sd45tj79u3iMWyHblXCz86QKBwNZgc" style="width: 30px; height: auto;" alt="Website Logo"/>
+        </td>
+        <td style="padding: 5px;">
+          <p><b>woodwings.com.au</b></p>
+        </td>
+      </tr>
+        <tr>
+          <td style="padding: 5px; width:50px">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9ksCO0Xrqupw79mIBnSQMrhGyUotzZi2E6KTv" style="width: 30px; height: auto;" alt="mail-icon"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>info@woodwings.com.au</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px; width:50px">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9nNOVfNZzPKoaVyQ1jAierfdtmzMLOZ3hBI84" style="width: 30px; height: auto;" alt="phone-icon"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>+61 0403-597-672</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 5px; width:50px">
+            <img src="https://utfs.io/f/TRmbMxI5Lwa9nNOVfNZzPKoaVyQ1jAierfdtmzMLOZ3hBI84" style="width: 30px; height: auto;" alt="phone-icon"/>
+          </td>
+          <td style="padding: 5px;">
+            <p><b>+61 0477-631-520</b></p>
+          </td>
+        </tr>
+      </table>`,
     };
 
     await transporter.sendMail(thankYouMailOptions);
