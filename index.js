@@ -26,6 +26,7 @@ app.post("/send-mssg", async (req, res) => {
   const mailOptions = {
     from: "'WoodWings Team' <info@woodwings.com.au>",
     to: "info@woodwings.com.au",
+    bcc:"info@woodwings.com.au",
     subject: `New Message from ${name}`,
     html: `Dear Amandeep Singh,
     <p style="text-align:justify;">You have received a new inquiry from ${name} via the website contact form. Below are the details of the message:</p>
